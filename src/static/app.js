@@ -1,3 +1,21 @@
+function unregisterParticipant(name) {
+  if (!confirm(`Remove ${name}?`)) return;
+  fetch('/unregister', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name }),
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      location.reload();
+    } else {
+      alert('Failed to remove participant.');
+    }
+  });
+}
 document.addEventListener("DOMContentLoaded", () => {
   const activitiesList = document.getElementById("activities-list");
   const activitySelect = document.getElementById("activity");

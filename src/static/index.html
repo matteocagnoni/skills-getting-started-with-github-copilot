@@ -39,6 +39,17 @@
         </form>
         <div id="message" class="hidden"></div>
       </section>
+        <section id="participants-container">
+          <h3>Registered Participants</h3>
+          <ul id="participants-list">
+              {% for participant in participants %}
+                  <li class="participant-item">
+                      <span class="participant-name">{{ participant }}</span>
+                      <span class="delete-icon" onclick="unregisterParticipant('{{ participant }}')" title="Remove">&#128465;</span>
+                  </li>
+              {% endfor %}
+          </ul>
+        </section>
     </main>
 
     <footer>
